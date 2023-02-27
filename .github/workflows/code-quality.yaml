@@ -20,17 +20,15 @@ jobs:
           options: "--check --diff --color"
           jupyter: true
 
-  python-flake8:
-    name: Run Flake8 checks
+  python-isort:
+    name: Fomat code with isort
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Set up Python environment
-        uses: actions/setup-python@v4
+      - name: Run isort formatter checks
+        uses: isort/isort-action@v1.0.0
         with:
-          python-version: "3.11"
-
-      - name: Run Flake8 formatter checks
-        uses: py-actions/flake8@v2
+          configuration: "--check --diff --color"
+          requirementsFiles: "requirements.txt"
